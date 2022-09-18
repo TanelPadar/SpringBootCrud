@@ -118,25 +118,25 @@ export default class User extends React.Component{
                 {
                     this.state.users
                         .map(user => {
-                         return (
-                             < >
+                            return (
+                                < >
 
-                                 <div class="userList">
-                                <li key={user.user_id}>nimi: {user.name}  {user.surname}, email:{user.email}</li>
-                                     <div className="buttonsForUser">
-                                     <EditModal user={user} />
-                                     <button class="btn-danger btn btn-primay ms-1 " onClick={()=>this.deleteUser(user.user_id)}>Remove</button>
-                                     </div>
-                                 </div>
+                                    <div class="userList">
+                                        <li key={user.user_id}>nimi: {user.name}  {user.surname}, email:{user.email}</li>
+                                        <div className="buttonsForUser">
+                                            <EditModal user={user} />
+                                            <button class="btn-danger btn btn-primay ms-1 " onClick={()=>this.deleteUser(user.user_id)}>Remove</button>
+                                        </div>
+                                    </div>
 
-                             </>)
+                                </>)
 
-                    })}
+                        })}
 
                 <div class="newUserButton" onClick={()=>this.addUser()}><button>new User</button></div>
             </ul>
 
-    )
+        )
 
     }
 }
