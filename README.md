@@ -11,31 +11,8 @@ In the terminal navigate to src/frontend and type:
 To run Spring Backend
 In your IDE run PadarApplication.java
 
-### App Functionalities
-
-**GET** a list of users 
-
-**CREATE** a new user
-
-**EDIT** any user
-
-**DELETE** a  user from the table
-
 ### Screenshots
 
-![Alt text](/pildid/Tanel_Padar.png?raw=true "Optional Title")
-
-![Alt text](/pildid/Edit_user.png?raw=true "Optional Title")
-
-![Alt text](/pildid/adduser.png?raw=true "Optional Title")
-
-
-### Built with:
-
-* React
-* Java
-* Spring
-* hsqldb
 
 
 This project requires you to have Node.js + Java 11+ installed
