@@ -11,6 +11,10 @@ In the terminal navigate to src/frontend and type:
 To run Spring Backend
 In your IDE run PadarApplication.java
 
+### Screenshots
+
+
+
 This project requires you to have Node.js + Java 11+ installed
 Useful links:
 
