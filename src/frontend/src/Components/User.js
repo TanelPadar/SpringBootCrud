@@ -8,8 +8,6 @@ function EditModal({user}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
     const [email, setEmail] = useState('');
@@ -33,16 +31,15 @@ function EditModal({user}) {
     };
 
     const saveUser = () => {
-       const savingUser = {
-           "user_id": user.user_id,
-           "name":fname,
-           "surname":lname,
-           "email": email
-       }
+        const savingUser = {
+            "user_id": user.user_id,
+            "name":fname,
+            "surname":lname,
+            "email": email
+        }
         axios.put('http://localhost:8080/user/edituser', savingUser)
             .then()
     }
-
 
 
     return (
