@@ -20,12 +20,13 @@ public class UserController {
         return UserDao.getAllUsers();
     }
 
-    @DeleteMapping("/user/delete/{id}")
-    public void deleteUsersById(@PathVariable int id){UserDao.deleteUserById(id);}
 
     @PostMapping("/user/adduser")
     public void addUsers(@RequestBody User user){UserDao.addUser(user);}
 
     @PutMapping("/user/edituser")
     public void editUsers(@RequestBody User user){UserDao.updateUser(user);}
+
+    @DeleteMapping("/user/delete/{id}")
+    public void deleteUsersById(@PathVariable int id){UserDao.deleteUserById(id);}
 }
