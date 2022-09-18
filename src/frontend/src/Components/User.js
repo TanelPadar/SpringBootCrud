@@ -31,16 +31,21 @@ function EditModal({user}) {
 
     };
 
-    const saveUser = () => {
+        const saveUser = () => {
+
         const savingUser = {
-            "user_id": user.user_id,
+            "user_id":user.user_id,
             "name":fname,
             "surname":lname,
             "email": email
         }
         axios.put('http://localhost:8080/user/edituser', savingUser)
-            .then()
+            .then(res => {
+                window.location.reload();
+            })
     }
+
+
 
 
     return (
@@ -73,6 +78,84 @@ function EditModal({user}) {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+        </>
+    );
+}
+
+
+
+function AddUserModal() {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const [email, setEmail] = useState('');
+    const handleChange = event => {
+
+        switch(event.target.id) {
+            case "fname":
+                setFname(event.target.value);
+                break;
+            case "lname":
+                setLname(event.target.value);
+                break;
+            case "email":
+                setEmail(event.target.value);
+                break;
+            default:
+                break
+        }
+
+
+    };
+
+    const addUser = () => {
+        const savingUser = {
+            "name":fname,
+            "surname":lname,
+            "email": email
+        }
+        axios.post('http://localhost:8080/user/adduser', savingUser)
+            .then(res => {
+                window.location.reload();
+            })
+    }
+
+
+    return (
+        <>
+            <Button className="btn-info-mx-5" onClick={handleShow}>
+                Add
+            </Button>
+
+            <Modal show={show} onHide={handleClose} >
+                <Modal.Header closeButton>
+                    <Modal.Title>Add user</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form>
+                        <label htmlFor="fname" >First name:</label>
+                        <input type="text" id="fname" name="fname"  value={fname} onChange={handleChange} ></input><br></br>
+                        <label htmlFor="lname" >Last name:</label>
+                        <input type="text" id="lname" name="lname" value={lname} onChange={handleChange}></input><br></br>
+                        <label htmlFor="email" >email:</label>
+                        <input type="text" id="email" name="email" value={email} onChange={handleChange} ></input>
+                    </form>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={addUser}>
+                        Add user
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
         </>
     );
 }
@@ -82,6 +165,7 @@ export default class User extends React.Component{
     state = {
         users: []
     }
+
 
     componentDidMount() {
         axios.get('http://localhost:8080/user/all')
@@ -98,7 +182,6 @@ export default class User extends React.Component{
             .then(() => {
 
             })
-
     }
 
     deleteUser(user_id) {
@@ -115,29 +198,31 @@ export default class User extends React.Component{
     render() {
 
         return (
-            <ul>
+            <ul >
                 {
                     this.state.users
                         .map(user => {
                             return (
                                 < >
-
                                     <div class="userList">
-                                        <li key={user.user_id}>nimi: {user.name}  {user.surname}, email:{user.email}</li>
+                                        <li key={user.user_id}><b>nimi:</b> {user.name}  {user.surname}, <b>email:</b> {user.email}</li>
                                         <div className="buttonsForUser">
                                             <EditModal user={user} />
-                                            <button class="btn-danger btn btn-primay ms-1 " onClick={()=>this.deleteUser(user.user_id)}>Remove</button>
+                                            <button class="btn-danger btn btn-primay mx-2 " onClick={()=>this.deleteUser(user.user_id)}>Remove</button>
+                                            <AddUserModal />
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </>)
 
                         })}
 
-                <div class="newUserButton" onClick={()=>this.addUser()}><button>new User</button></div>
+
+
             </ul>
 
-        )
 
+        )
     }
+
 }
