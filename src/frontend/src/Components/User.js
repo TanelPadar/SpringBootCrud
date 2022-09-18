@@ -58,16 +58,6 @@ export default class User extends React.Component{
             })
     }
 
-
-    addUser() {
-
-        axios.post('http://localhost:8080/user/adduser')
-            .then(() => {
-
-            })
-
-    }
-
     deleteUser(user_id) {
 
         axios.delete('http://localhost:8080/user/delete/' + user_id)
@@ -75,6 +65,15 @@ export default class User extends React.Component{
                 let users = this.state.users
                 users = users.filter(user => user.user_id !== user_id)
                 this.setState({users:users})
+            })
+
+    }
+
+    addUser() {
+
+        axios.post('http://localhost:8080/user/adduser')
+            .then(() => {
+
             })
 
     }
@@ -93,7 +92,7 @@ export default class User extends React.Component{
                                 <li key={user.user_id}>nimi: {user.name}  {user.surname}, email:{user.email}</li>
                                      <div className="buttonsForUser">
                                      <EditModal user={user} />
-                                     <button class="btn-danger btn btn-primay ms-1 " onClick={()=>this.deleteUser(user.user_id)}>Remove</button>
+                                     <button class="btn-danger btn btn-primay ms-1 " onClick={()=>this.deleteUser(user.user_id)}>X</button>
                                      </div>
                                  </div>
 
