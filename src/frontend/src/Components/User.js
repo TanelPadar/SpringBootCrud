@@ -87,6 +87,7 @@ export default class User extends React.Component{
                         .map(user => {
                          return (
                              < >
+
                                  <div class="userList">
                                 <li key={user.user_id}>nimi: {user.name}  {user.surname}, email:{user.email}</li>
                                      <div className="buttonsForUser">
