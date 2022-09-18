@@ -12,7 +12,11 @@ To run Spring Backend
 In your IDE run PadarApplication.java
 
 ### Screenshots
+![Alt text](pildid/Tanel_Padar.png?raw=true "Optional Title")
 
+![Alt text](pildid/adduser.png?raw=true "Optional Title")
+
+![Alt text](pildid/Edit_user.png?raw=true "Optional Title")
 
 
 This project requires you to have Node.js + Java 11+ installed
