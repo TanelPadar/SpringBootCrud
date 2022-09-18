@@ -22,9 +22,13 @@ In your IDE run PadarApplication.java
 **DELETE** a  user from the table
 
 ### Screenshots
-![Alt text](/pildid/Tanel Padar.png?raw=true "Optional Title")
-![Alt text](/pildid/Edit user.png?raw=true "Optional Title")
+
+![Alt text](/pildid/Tanel_Padar.png?raw=true "Optional Title")
+
+![Alt text](/pildid/Edit_user.png?raw=true "Optional Title")
+
 ![Alt text](/pildid/adduser.png?raw=true "Optional Title")
+
 
 ### Built with:
 
