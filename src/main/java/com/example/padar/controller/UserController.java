@@ -15,18 +15,18 @@ public class UserController {
         this.UserDao = UserDao;
     }
 
-    @GetMapping("/user/all")
+    @GetMapping("/users")
     public List<User> getAllUsers() {
         return UserDao.getAllUsers();
     }
 
 
-    @PostMapping("/user/adduser")
+    @PostMapping("/users")
     public void addUsers(@RequestBody User user){UserDao.addUser(user);}
 
-    @PutMapping("/user/edituser")
+    @PutMapping("/users")
     public void editUsers(@RequestBody User user){UserDao.updateUser(user);}
 
-    @DeleteMapping("/user/delete/{id}")
+    @DeleteMapping("/users/delete/{id}")
     public void deleteUsersById(@PathVariable int id){UserDao.deleteUserById(id);}
 }

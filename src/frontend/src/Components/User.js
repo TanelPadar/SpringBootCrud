@@ -8,7 +8,6 @@ function EditModal({user}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
     const [email, setEmail] = useState('');
@@ -39,13 +38,11 @@ function EditModal({user}) {
             "surname":lname,
             "email": email
         }
-        axios.put('http://localhost:8080/user/edituser', savingUser)
+        axios.put('http://localhost:8080/users', savingUser)
             .then(res => {
                 window.location.reload();
             })
     }
-
-
 
 
     return (
@@ -118,7 +115,7 @@ function AddUserModal() {
             "surname":lname,
             "email": email
         }
-        axios.post('http://localhost:8080/user/adduser', savingUser)
+        axios.post('http://localhost:8080/users', savingUser)
             .then(res => {
                 window.location.reload();
             })
@@ -168,7 +165,7 @@ export default class User extends React.Component{
 
 
     componentDidMount() {
-        axios.get('http://localhost:8080/user/all')
+        axios.get('http://localhost:8080/users')
             .then(res => {
                 const users = res.data
                 this.setState({users})
@@ -178,7 +175,7 @@ export default class User extends React.Component{
 
     addUser() {
 
-        axios.post('http://localhost:8080/user/adduser')
+        axios.post('http://localhost:8080/users')
             .then(() => {
 
             })
@@ -186,7 +183,7 @@ export default class User extends React.Component{
 
     deleteUser(user_id) {
 
-        axios.delete('http://localhost:8080/user/delete/' + user_id)
+        axios.delete('http://localhost:8080/users/delete/' + user_id)
             .then(() => {
                 let users = this.state.users
                 users = users.filter(user => user.user_id !== user_id)
@@ -205,7 +202,7 @@ export default class User extends React.Component{
                             return (
                                 < >
                                     <div class="userList">
-                                        <li key={user.user_id}><b>nimi:</b> {user.name}  {user.surname}, <b>email:</b> {user.email}</li>
+                                        <li key={user.user_id}><b>Eesnimi:</b> {user.name}  <b>Perekonnanimi:</b> {user.surname} <b>email:</b> {user.email}</li>
                                         <div className="buttonsForUser">
                                             <EditModal user={user} />
                                             <button class="btn-danger btn btn-primay mx-2 " onClick={()=>this.deleteUser(user.user_id)}>Remove</button>
@@ -224,5 +221,4 @@ export default class User extends React.Component{
 
         )
     }
-
 }
